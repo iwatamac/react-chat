@@ -1,9 +1,10 @@
+import React, {useState} from 'react';
 import './App.css';
 import SignIn from './SignIn';
 
-function App() {
-  return (
-  <SignIn />
-  )}
+export default () => {
+  const [name, setName] = useState('');
 
-export default App;
+  return <SignIn setName={setName} />;
+  /* SignInにsetNameを渡す */
+};
