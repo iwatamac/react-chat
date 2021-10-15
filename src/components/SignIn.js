@@ -7,12 +7,20 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+/* ＠material-uiが@muiに変わっているため、インストールが教材と違う。下のようにインストール
+yarn add @mui/material @emotion/react @emotion/styled */
+
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <Link 
+      color="inherit" 
+      href="https://twitter.com/iwatamac"
+      target="_blank"
+      rel="noopener"
+      >
         いわたま
       </Link>
     </Typography>
@@ -51,10 +59,9 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="name"
+              label="ニックネーム"
+              name="name"
               autoFocus
             />
             <Button
