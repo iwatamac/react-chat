@@ -1,7 +1,15 @@
 import * as React from 'react';
+import {makeStyles} from '@mui/styles';
+
+const useStyles = makeStyles({
+  root: {
+    gridRow: 2,
+  }
+})
 
 const MessageInputField = ({name}) => {
-  return <div>MessageInputField</div>;
+  const classes= useStyles();
+  return <div className={classes.root}>MessageInputField</div>;
 };
 
 export default MessageInputField;
