@@ -36,6 +36,8 @@ export default function SignIn({setName}) {
 
   const [string, setString] = useState('');
 
+  const [isComposed, setIsComposed] = useState(false);
+
   useEffect(() => {
     const disabled = string === ''
     setDisabled(disabled)
@@ -77,12 +79,15 @@ export default function SignIn({setName}) {
 
               onKeyDown={(e) => {
 
+                if (isComposed) return;
                 
                 if (e.key === 'Enter') {
                   setName(e.target.value)
                   e.preventDefault();
                 }
               }}
+              onCompositionStart={() => setIsComposed(true)}
+              onCompositionEnd={() => setIsComposed(false)}
             />
             <Button
               type="button"
