@@ -3,6 +3,7 @@ import {makeStyles} from '@mui/styles';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 import MessageField from './MessageField';
+import MessageSubmitButton from './MessageSubmitButton';
 import { useState } from 'react';
 
 import { gravatarPath } from '../gravatar';
@@ -28,7 +29,9 @@ const MessageInputField = ({name}) => {
       <Grid item xs={10}>
         <MessageField name={name} setText={setText} text={text} />
       </Grid>
-      <Grid item xs={1}>ボタン</Grid>
+      <Grid item xs={1}>
+        <MessageSubmitButton name={name} setText={setText} text={text} />
+      </Grid>
     </Grid>
     </div>
   );
