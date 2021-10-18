@@ -23,7 +23,7 @@ const MessageField = ({inputEl, name, setText, text}) => {
     if (text === '') return;
 
     if (e.key === 'Enter') {
-      pushMessage({name:'iwama', text});
+      pushMessage({name, text});
       setText('');
       e.preventDefault();
     }
