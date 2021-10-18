@@ -3,13 +3,14 @@ import { IconButton } from '@mui/material';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import { pushMessage } from '../firebase';
 
-const MessageSubmitButton = ({name, setText, text}) => {
+const MessageSubmitButton = ({inputEl, name, setText, text}) => {
   return (
     <IconButton 
     disabled={text === ''}
     onClick={() => {
       pushMessage({name: 'iwama',text});
       setText('');
+      inputEl.current.focus();
     }}
     >
       <SendRoundedIcon />
