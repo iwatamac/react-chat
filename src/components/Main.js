@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Main = ({name}) => {
+const Main = ({name, roomName}) => {
   const classes = useStyles();
   return (
   <div className={classes.root}>

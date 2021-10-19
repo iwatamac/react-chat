@@ -23,8 +23,13 @@ const firebaseConfig = {
  /* initialize(firebaseConfig); */
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
+  export const roomsRef = database.ref('rooms')
   export const messagesRef = database.ref('messages')
 
   export const pushMessage = ({name, text}) => {
     messagesRef.push({name, text});
+  };
+
+  export const pushRoom = ({roomName}) => {
+    roomsRef.push({roomName});
   };

@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { pushRoom } from '../firebase';
 /* ＠material-uiが@muiに変わっているため、インストールが教材と違う。下のようにインストール
 yarn add @mui/material @emotion/react @emotion/styled */
 
@@ -30,20 +31,20 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn({setName, setRoomName}) {
+export default function SignIn({setName}) {
+  const [roomName, setRoomName] = useState('');
 
   const [disabled, setDisabled] = useState(true);
 
   const [string, setString] = useState('');
-  const [string2, setString2] = useState('');
 
   const [isComposed, setIsComposed] = useState(false);
 
 
   useEffect(() => {
-    const disabled = (string === '') || (string2 === '')
+    const disabled = (setRoomName === '') || (string === '')
     setDisabled(disabled)
-  }, [string, string2]);
+  }, [string]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -77,14 +78,14 @@ export default function SignIn({setName, setRoomName}) {
               label="ルームネーム"
               name="roomname"
               autoFocus
-              onChange={(e) => setString(e.target.value)}
+              onChange={(e) => setRoomName(e.target.value)}
 
               onKeyDown={(e) => {
 
                 if (isComposed) return;
                 
                 if (e.key === 'Enter') {
-                  setRoomName(e.target.value)
+                  pushRoom({roomName});
                   e.preventDefault();
                 }
               }}
@@ -98,7 +99,7 @@ export default function SignIn({setName, setRoomName}) {
               id="name"
               label="ニックネーム"
               name="name"
-              onChange={(e) => setString2(e.target.value)}
+              onChange={(e) => setString(e.target.value)}
 
               onKeyDown={(e) => {
 
@@ -120,8 +121,10 @@ export default function SignIn({setName, setRoomName}) {
               disabled={disabled}
               onClick={() => {
                 setName(string) 
-                setRoomName(string)
+                pushRoom({roomName})
+                setRoomName('');
               }}
+              
             >
               はじめる
             </Button>
