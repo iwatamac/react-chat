@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { pushMessage } from '../firebase';
 
-const MessageField = ({inputEl, name, setText, text}) => {
+const MessageField = ({inputEl, name, setText, text, roomName}) => {
   const [isComposed, setIsComposed] = useState(false);
 
   return <TextField
@@ -23,7 +23,7 @@ const MessageField = ({inputEl, name, setText, text}) => {
     if (text === '') return;
 
     if (e.key === 'Enter') {
-      pushMessage({name, text});
+      pushMessage({name, text, roomName});
       setText('');
       e.preventDefault();
     }

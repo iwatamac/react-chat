@@ -15,7 +15,8 @@ const useStyles = makeStyles({
   }
 })
 
-const MessageInputField = ({name}) => {
+const MessageInputField = ({name, roomName}) => {
+  console.log(roomName)
   const inputEl = useRef(null);
   const [text, setText] = useState('');
   const classes= useStyles();
@@ -30,12 +31,12 @@ const MessageInputField = ({name}) => {
       <Grid item xs={10}>
         <MessageField 
         inputEl={inputEl}
-        name={name} setText={setText} text={text} />
+        name={name} setText={setText} text={text} roomName={roomName} />
       </Grid>
       <Grid item xs={1}>
         <MessageSubmitButton 
         inputEl={inputEl}
-        name={name} setText={setText} text={text} />
+        name={name} setText={setText} text={text} roomName={roomName} />
       </Grid>
     </Grid>
     </div>

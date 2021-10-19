@@ -26,10 +26,11 @@ const firebaseConfig = {
   export const roomsRef = database.ref('rooms')
   export const messagesRef = database.ref('messages')
 
-  export const pushMessage = ({name, text}) => {
-    messagesRef.push({name, text});
+  export const pushMessage = ({name, text, roomName}) => {
+    messagesRef.push({name, text, roomName});
   };
 
   export const pushRoom = ({roomName}) => {
     roomsRef.push({roomName});
+    /* pushするvalueがRef毎にかぶっていても別のRefに保存する事ができる */
   };

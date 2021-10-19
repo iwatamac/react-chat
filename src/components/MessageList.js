@@ -40,7 +40,7 @@ const MessageList = () => {
   <List className={classes.root}>
     {messages.map(({key,name,text}, index ) => {
       const isLastItem = length === index + 1;
-      
+
       return (
       <MessageItem key={key}
        name={name} 

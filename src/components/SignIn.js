@@ -31,8 +31,8 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn({setName}) {
-  const [roomName, setRoomName] = useState('');
+export default function SignIn({setName,roomName,setRoomName}) {
+  
 
   const [disabled, setDisabled] = useState(true);
 
