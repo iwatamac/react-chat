@@ -30,18 +30,20 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn({setName}) {
+export default function SignIn({setName, setRoomName}) {
 
   const [disabled, setDisabled] = useState(true);
 
   const [string, setString] = useState('');
+  const [string2, setString2] = useState('');
 
   const [isComposed, setIsComposed] = useState(false);
 
+
   useEffect(() => {
-    const disabled = string === ''
+    const disabled = (string === '') || (string2 === '')
     setDisabled(disabled)
-  }, [string]);
+  }, [string, string2]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -67,6 +69,28 @@ export default function SignIn({setName}) {
             ようこそ
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="roomname"
+              label="ルームネーム"
+              name="roomname"
+              autoFocus
+              onChange={(e) => setString(e.target.value)}
+
+              onKeyDown={(e) => {
+
+                if (isComposed) return;
+                
+                if (e.key === 'Enter') {
+                  setRoomName(e.target.value)
+                  e.preventDefault();
+                }
+              }}
+              onCompositionStart={() => setIsComposed(true)}
+              onCompositionEnd={() => setIsComposed(false)}
+            />
             <TextField
               margin="normal"
               required
@@ -74,8 +98,7 @@ export default function SignIn({setName}) {
               id="name"
               label="ニックネーム"
               name="name"
-              autoFocus
-              onChange={(e) => setString(e.target.value)}
+              onChange={(e) => setString2(e.target.value)}
 
               onKeyDown={(e) => {
 
@@ -96,7 +119,8 @@ export default function SignIn({setName}) {
               sx={{ mt: 3, mb: 2 }}
               disabled={disabled}
               onClick={() => {
-                setName(string);
+                setName(string) 
+                setRoomName(string)
               }}
             >
               はじめる

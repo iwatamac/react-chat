@@ -7,9 +7,12 @@ import config from '../config.json'
 export default () => {
   const [name, setName] = useState('');
 
+  const [roomName, setRoomName] = useState('');
+  
+
   if (config.signInEnabled && name === '') {
-    return <SignIn setName={setName} />;
+    return <SignIn setName={setName} setRoomName={setRoomName}/>;
   } else {
     return <Main name={name} />;
     }
-  };
+};
