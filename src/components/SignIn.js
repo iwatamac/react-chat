@@ -7,7 +7,7 @@ import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import { pushRoom } from '../firebase';
 /* ＠material-uiが@muiに変わっているため、インストールが教材と違う。下のようにインストール
 yarn add @mui/material @emotion/react @emotion/styled */
@@ -44,7 +44,7 @@ export default function SignIn({setName,roomName,setRoomName}) {
   useEffect(() => {
     const disabled = (setRoomName === '') || (string === '')
     setDisabled(disabled)
-  }, [string]);
+  }, [string,setRoomName]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -122,7 +122,6 @@ export default function SignIn({setName,roomName,setRoomName}) {
               onClick={() => {
                 setName(string) 
                 pushRoom({roomName})
-                setRoomName('');
               }}
               
             >

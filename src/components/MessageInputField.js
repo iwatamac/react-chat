@@ -16,7 +16,6 @@ const useStyles = makeStyles({
 })
 
 const MessageInputField = ({name, roomName}) => {
-  console.log(roomName)
   const inputEl = useRef(null);
   const [text, setText] = useState('');
   const classes= useStyles();
