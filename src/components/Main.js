@@ -19,7 +19,7 @@ const Main = ({name, roomName}) => {
   return (
   <div className={classes.root}>
     <RoomPage roomName={roomName}/>
-    <MessageList />
+    <MessageList roomPage={roomName}/>
     <MessageInputField name={name} roomName={roomName} />
   </div>
   );

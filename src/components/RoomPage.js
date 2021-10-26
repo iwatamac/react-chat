@@ -20,8 +20,6 @@ const RoomPage = ({roomName}) => {
       });
   },[]);
 
-  console.log(roomName)
-
   return <div>{roomName}</div> 
 }; 
 

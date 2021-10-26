@@ -4,6 +4,7 @@ import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import { pushMessage } from '../firebase';
 
 const MessageSubmitButton = ({inputEl, name, setText, text, roomName}) => {
+  
   return (
     <IconButton 
     disabled={text === ''}

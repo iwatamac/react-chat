@@ -14,10 +14,12 @@ const useStyles = makeStyles({
   },
 });
 
-const MessageList = () => {
+const MessageList = ({roomPage}) => {
   const [messages, setMessages] = useState([])
   const classes = useStyles();
-
+  const currentRoom = {roomPage}
+  
+  
   useEffect(() => {
     messagesRef
       .orderByKey()
@@ -27,8 +29,8 @@ const MessageList = () => {
         if (messages === null) return;
         const entries = Object.entries(messages); 
         const newMessages = entries.map((entry) => {
-        const [key, nameAndText] = entry;
-        return {key, ...nameAndText};
+        const [key, nameAndTextAndRoom] = entry;
+        return {key, ...nameAndTextAndRoom};
         });
         setMessages(newMessages);
       });
@@ -36,19 +38,29 @@ const MessageList = () => {
 
   const length = messages.length;
 
+  
+  
   return (
-  <List className={classes.root}>
-    {messages.map(({key,name,text}, index ) => {
-      const isLastItem = length === index + 1;
 
+    <List className={classes.root}>
+    {messages.map(({key,name,text,roomName}, index ) => {
+      const isLastItem = length === index + 1;
+      const roomId = {roomName}      
+     
+      if (currentRoom === roomId) {
       return (
-      <MessageItem key={key}
-       name={name} 
-       text={text} 
-       isLastItem={isLastItem} 
-       />
-      );
-      })}
+        <MessageItem 
+        key={key}
+        name={name} 
+        text={text} 
+        isLastItem={isLastItem} 
+        roomName={roomName}
+        />
+        );
+}
+else {
+  return;
+}})}
   </List>
   )};
 

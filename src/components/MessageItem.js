@@ -9,9 +9,10 @@ import {
 } from '@mui/material';
 import { gravatarPath } from '../gravatar';
 
-const MessageItem = ({isLastItem, name, text}) => {
+const MessageItem = ({isLastItem, name, text, roomName}) => {
   const ref = useRef(null);
   const avatarPath = gravatarPath(name);
+ 
 
   useEffect(() => {
     if (isLastItem) {
@@ -39,7 +40,7 @@ const MessageItem = ({isLastItem, name, text}) => {
         />
       </ListItem>
     
-  );
-};
+  )};
+
 
 export default MessageItem;
